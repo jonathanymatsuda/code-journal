@@ -15,27 +15,27 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="container">
+  <header class="container purple-background">
     <div class="row">
       <div class="full-column">
-        <h2>Code Journal</h2>
+        <h2 class="white-text">Code Journal</h2>
       </div>
     </div>
   </header>
   <main>
-    <div class="container" data-view="entry-form">
+    <div class="container beige-background" data-view="entry-form">
       <form>
         <div class="row">
           <div class="full-column">
             <h1>New Entry</h1>
-            <img src="images/placeholder-image-square.jpg" alt="placeholder">
+            <img src="images/placeholder-image-square.jpg" alt="placeholder" class="input-box-width border-radius">
           </div>
         </div>
         <div classs="row">
           <div class="full-column">
             <label for="title-journal">Title</label>
             <div>
-            <input type="text" name="title" id="title-box"/>
+            <input type="text" name="title" id="title-box" class="input-box-width border-radius"/>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
           <div class="full-column">
             <label for="photo-url">Photo URL</label>
             <div>
-            <input type="url" name="url" id="url-insert"/>
+            <input type="url" name="url" id="url-insert" class="input-box-width border-radius"/>
             </div>
           </div>
         </div>
@@ -51,13 +51,13 @@
           <div class="full-column">
             <label for="notes-journal">Notes</label>
             <div>
-            <input type="text" name="notes" id="notes-box"/>
+            <textarea name="notes" id="notes-box" class="input-box-width border-radius"></textarea>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="full-column">
-            <button>Save</button>
+            <button class="save-button purple-background white-text border-radius">Save</button>
           </div>
         </div>
       </form>
