@@ -13,7 +13,7 @@ function submission(event) {
     title: $journalForm.elements.title.value,
     photo: $journalForm.elements.url.value,
     notes: $journalForm.elements.notes.value,
-    nextEntryId: data.nextEntryId++
+    entryID: data.nextEntryId += 1
   };
   data.entries.push(inputValues);
   $img.src = 'images/placeholder-image-square.jpg';
