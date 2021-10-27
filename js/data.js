@@ -6,11 +6,11 @@ var data = {
   editing: null,
   nextEntryId: 1
 };
-var previousSumbitsStore = localStorage.getItem('javascript-local-storage');
+var previousSumbitsStore = localStorage.getItem('entries-data');
 
 function storeData(event) {
   var previousSubmitsJSON = JSON.stringify(data.entries);
-  localStorage.setItem('javascript-local-storage', previousSubmitsJSON);
+  localStorage.setItem('entries-data', previousSubmitsJSON);
 }
 
 if (previousSumbitsStore !== null) {
