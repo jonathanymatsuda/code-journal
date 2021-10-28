@@ -1,0 +1,65 @@
+header {
+  height: 90px;
+}
+
+body {
+  font-family: 'Proza Libre', sans-serif;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.column-half .header {
+  line-height: 2.5;
+}
+
+.column-full .header {
+  line-height: 2.5;
+}
+
+img {
+  width: 100%;
+  height: 245px;
+  object-fit: contain;
+}
+
+input,
+textarea {
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+  padding: 5px 5px;
+}
+
+textarea {
+  height: 150px;
+}
+
+.save-button {
+  width: 65px;
+  padding: 10px;
+  margin-top: 15px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.purple-background {
+  background-color: #562b81;
+}
+
+.beige-background {
+  background-color: #f0f0f0;
+}
+
+.white-text {
+  color: white;
+}
+
+.border-radius {
+  border-radius: 4px;
+  border: 1px solid #b6b6b6;
+}

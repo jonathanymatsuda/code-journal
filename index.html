@@ -14,10 +14,48 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-  <header>
+<body class="beige-background">
+  <header class="purple-background">
+    <div class="container">
+      <div class="row">
+        <div class="full-column">
+          <h2 class="white-text">Code Journal</h2>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div class="container" data-view="entry-form">
+      <form id="journal-form">
+        <div class="row">
+          <div class="column-full">
+            <h1>New Entry</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-half">
+           <img src="images/placeholder-image-square.jpg" alt="placeholder" class="input-box-width border-radius">
+          </div>
+          <div class="column-half">
+            <label for="title-journal" class="header">Title</label>
+            <input type="text" name="title" id="title-box" class="input-box-width border-radius" required>
+            <label for="photo-url" class="header">Photo URL</label>
+            <input type="url" name="url" id="url-box" class="input-box-width border-radius" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <label for="notes-journal" class="header">Notes</label>
+            <textarea name="notes" id="notes-box" class="border-radius"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full text-align-end">
+            <button type= "submit" class="save-button purple-background white-text border-radius">Save</button>
+          </div>
+        </div>
+      </form>
+     </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
