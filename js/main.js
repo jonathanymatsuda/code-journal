@@ -1,5 +1,5 @@
 /* global data */
-/* exported data */
+
 var $img = document.querySelector('img');
 var $inputUrl = document.querySelector('input[type="url"]');
 var $journalForm = document.querySelector('#journal-form');
@@ -13,7 +13,7 @@ function submission(event) {
     title: $journalForm.elements.title.value,
     photo: $journalForm.elements.url.value,
     notes: $journalForm.elements.notes.value,
-    entryID: data.nextEntryId += 1
+    entryID: data.nextEntryId++
   };
   data.entries.push(inputValues);
   $img.src = 'images/placeholder-image-square.jpg';

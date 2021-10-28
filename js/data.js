@@ -6,15 +6,15 @@ var data = {
   editing: null,
   nextEntryId: 1
 };
-var previousSumbitsStore = localStorage.getItem('entries-data');
+var previousSubmits = localStorage.getItem('entries-data');
 
 function storeData(event) {
-  var previousSubmitsJSON = JSON.stringify(data.entries);
+  var previousSubmitsJSON = JSON.stringify(data);
   localStorage.setItem('entries-data', previousSubmitsJSON);
 }
 
-if (previousSumbitsStore !== null) {
-  data.entries = JSON.parse(previousSumbitsStore);
+if (previousSubmits !== null) {
+  data = JSON.parse(previousSubmits);
 }
 
 window.addEventListener('beforeunload', storeData);
