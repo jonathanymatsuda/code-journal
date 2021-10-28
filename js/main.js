@@ -22,3 +22,11 @@ function submission(event) {
 
 $inputUrl.addEventListener('input', updatePhoto);
 $journalForm.addEventListener('submit', submission);
+
+// function createEntries(entries) {
+var divDataView = document.createElement('div');
+divDataView.setAttribute('data-view', 'entries');
+
+var unorderedList = document.createElement('ul');
+divDataView.view.appendChild(unorderedList);
+// }
