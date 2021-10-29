@@ -26,6 +26,10 @@
   text-align: end;
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
