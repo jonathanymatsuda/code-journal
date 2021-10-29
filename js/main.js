@@ -24,9 +24,10 @@ $inputUrl.addEventListener('input', updatePhoto);
 $journalForm.addEventListener('submit', submission);
 
 // function createEntries(entries) {
-var divDataView = document.createElement('div');
-divDataView.setAttribute('data-view', 'entries');
+//   var divDataView = document.createElement('div');
+//   divDataView.setAttribute('class', 'container');
+//   divDataView.setAttribute('data-view', 'entries');
 
-var unorderedList = document.createElement('ul');
-divDataView.view.appendChild(unorderedList);
+//   var unorderedList = document.createElement('ul');
+//   divDataView.view.appendChild(unorderedList);
 // }

@@ -28,7 +28,8 @@ img {
 }
 
 input,
-textarea {
+textarea,
+p {
   width: 100%;
   font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
@@ -45,6 +46,17 @@ textarea {
   margin-top: 15px;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.new-button {
+  width: 60px;
+  padding: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
 }
 
 .purple-background {

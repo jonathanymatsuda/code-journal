@@ -18,6 +18,10 @@
   width: 100%;
 }
 
+.align-items-center {
+  align-items: center;
+}
+
 .text-align-end {
   text-align: end;
 }
