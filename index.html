@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="beige-background">
-  <header class="purple-background">
+  <header class="orange-background">
     <div class="container">
       <div class="row">
         <div class="full-column">
@@ -51,43 +51,20 @@
         </div>
         <div class="row">
           <div class="column-full text-align-end">
-            <button type= "submit" class="save-button purple-background white-text border-radius">Save</button>
+            <button type= "submit" class="save-button orange-background white-text border-radius">Save</button>
           </div>
         </div>
       </form>
-    </div>
      <!-- Below this line will be commented out -->
-    <div class="container" data-view="entries">
-     <div class="row align-items-center space-between">
-        <h1>Entries</h1>
-        <button class="new-button purple-background white-text border-radius">New</button>
-     </div>
-      <ul>
-       <li>
-        <div class="row">
-         <div class="column-half">
-          <img src="images/placeholder-image-square.jpg" alt="journal-image" class="input-box-width border-radius">
-         </div>
-         <div class="column-half">
-          <h2>Placeholder Title</h2>
-          <p>Placeholder Notes</p>
-        </div>
-       </div>
-      </li>
-     </ul>
-     <ul>
-      <li>
-       <div class="row">
-         <div class="column-half">
-           <img src="images/placeholder-image-square.jpg" alt="journal-image" class="input-box-width border-radius">
-         </div>
-         <div class="column-half">
-           <h2>Placeholder Title</h2>
-           <p>Placeholder Notes</p>
+      <div data-view="entries">
+       <div class="row align-items-center space-between">
+         <div class="column-full"></div>
+           <h1>Entries</h1>
+           <button class="new-button orange-background white-text border-radius">New</button>
          </div>
         </div>
-       </li>
-     </ul>
+        <ul id="entries-list">
+       </ul>
     </div>
   </main>
   <script src="js/data.js"></script>
