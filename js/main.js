@@ -21,9 +21,6 @@ function submission(event) {
   $journalForm.reset();
 }
 
-$inputUrl.addEventListener('input', updatePhoto);
-$journalForm.addEventListener('submit', submission);
-
 function renderEntries(entries) {
   var $li = document.createElement('li');
 
@@ -65,4 +62,6 @@ function entryTreeCreation(event) {
   }
 }
 
+$inputUrl.addEventListener('input', updatePhoto);
+$journalForm.addEventListener('submit', submission);
 window.addEventListener('DOMContentLoaded', entryTreeCreation);

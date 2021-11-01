@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 header {
   height: 90px;
 }
@@ -60,6 +64,10 @@ textarea {
 
 li {
   list-style: none;
+}
+
+.gap-1rem {
+  column-gap: 1rem;
 }
 
 .orange-background {

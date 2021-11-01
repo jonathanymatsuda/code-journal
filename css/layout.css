@@ -22,6 +22,10 @@
   align-items: center;
 }
 
+.align-items-base {
+  align-items: baseline;
+}
+
 .text-align-end {
   text-align: end;
 }
