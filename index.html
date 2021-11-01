@@ -20,13 +20,13 @@
       <div class="row align-items-base gap-1rem">
         <div class="column-full"></div>
           <h2 class="white-text">Code Journal</h2>
-          <a class="nav-item white-text">Entries</a>
+          <a href="#" class="nav-item white-text">Entries</a>
       </div>
     </div>
   </header>
   <main>
     <div class="container" data-view="entry-form">
-      <form id="journal-form">
+      <form id="journal-form" class="">
         <div class="row">
           <div class="column-full">
             <h1>New Entry</h1>
@@ -55,16 +55,16 @@
           </div>
         </div>
       </form>
-      <div data-view="entries">
+      <div id="submissions" data-view="entries" class="hidden">
        <div class="row align-items-center space-between">
          <div class="column-full"></div>
            <h1>Entries</h1>
            <button class="new-button orange-background white-text border-radius">New</button>
-         </div>
-        </div>
-        <ul id="entries-list">
+       </div>
+      </div>
+       <ul id="entries-list">
        </ul>
-    </div>
+      </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

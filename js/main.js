@@ -3,7 +3,10 @@
 var $img = document.querySelector('img');
 var $inputUrl = document.querySelector('input[type="url"]');
 var $journalForm = document.querySelector('#journal-form');
+var $submissions = document.querySelector('#submissions');
 var $ul = document.querySelector('#entries-list');
+var $navItem = document.querySelector('.nav-item');
+var $newButton = document.querySelector('.new-button');
 
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
@@ -62,6 +65,18 @@ function entryTreeCreation(event) {
   }
 }
 
+function loadSubmissions(event) {
+  $journalForm.className = 'hidden';
+  $submissions.className = '';
+}
+
+function loadEntryForm(event) {
+  $journalForm.className = '';
+  $submissions.className = 'hidden';
+}
+
 $inputUrl.addEventListener('input', updatePhoto);
 $journalForm.addEventListener('submit', submission);
 window.addEventListener('DOMContentLoaded', entryTreeCreation);
+$navItem.addEventListener('click', loadSubmissions);
+$newButton.addEventListener('click', loadEntryForm);
