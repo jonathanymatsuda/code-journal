@@ -16,5 +16,4 @@ function storeData(event) {
 if (previousSubmits !== null) {
   data = JSON.parse(previousSubmits);
 }
-
 window.addEventListener('beforeunload', storeData);

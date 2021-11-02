@@ -12,7 +12,6 @@ function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
 }
 function submission(event) {
-  event.preventDefault();
   var inputValues = {
     title: $journalForm.elements.title.value,
     photo: $journalForm.elements.url.value,
