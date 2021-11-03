@@ -12,13 +12,16 @@ function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
 }
 function submission(event) {
+  event.preventDefault();
   var inputValues = {
     title: $journalForm.elements.title.value,
     photo: $journalForm.elements.url.value,
     notes: $journalForm.elements.notes.value,
     entryID: data.nextEntryId++
   };
-  data.entries.push(inputValues);
+  var renderedEntries = renderEntries(inputValues);
+  $ul.prepend(renderedEntries);
+  data.entries.unshift(inputValues);
   $img.src = 'images/placeholder-image-square.jpg';
   $journalForm.reset();
 }
@@ -67,11 +70,15 @@ function entryTreeCreation(event) {
 function loadSubmissions(event) {
   $journalForm.className = 'hidden';
   $submissions.className = '';
+  $ul.className = '';
+  data.view = 'entries';
 }
 
 function loadEntryForm(event) {
   $journalForm.className = '';
   $submissions.className = 'hidden';
+  $ul.className = 'hidden';
+  data.view = 'entry-form';
 }
 
 $inputUrl.addEventListener('input', updatePhoto);
