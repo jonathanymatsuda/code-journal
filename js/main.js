@@ -1,12 +1,14 @@
 /* global data */
-
+// var $container = document.querySelector('.container');
 var $img = document.querySelector('img');
 var $inputUrl = document.querySelector('input[type="url"]');
 var $journalForm = document.querySelector('#journal-form');
-var $submissions = document.querySelector('#submissions');
+// var $submissions = document.querySelector('#submissions');
 var $ul = document.querySelector('#entries-list');
-var $navItem = document.querySelector('.nav-item');
-var $newButton = document.querySelector('.new-button');
+// var $navItem = document.querySelector('.nav-item');
+// var $newButton = document.querySelector('.new-button');
+// var $dataView = document.querySelectorAll('data-view');
+// var $applicationView = document.querySelectorAll('.application-view');
 
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
@@ -67,22 +69,35 @@ function entryTreeCreation(event) {
   }
 }
 
-function loadSubmissions(event) {
-  $journalForm.className = 'hidden';
-  $submissions.className = '';
-  $ul.className = '';
-  data.view = 'entries';
-}
+// function switchViews(viewName) {
+//   for (var view = 0; view < $applicationView.length; view++) {
+//     if ($applicationView[view].getAttribute('data-view') === viewName) {
+//       $applicationView[view].className = 'application-view';
+//     } else {
+//       $applicationView[view].className = 'hidden application-view';
+//     }
+//   }
+//   data.view = viewName;
+// }
 
-function loadEntryForm(event) {
-  $journalForm.className = '';
-  $submissions.className = 'hidden';
-  $ul.className = 'hidden';
-  data.view = 'entry-form';
-}
+// function loadSubmissions(event) {
+//   data.view = 'entries';
+
+//   $journalForm.className = 'hidden';
+//   $submissions.className = '';
+//   $ul.className = '';
+//   data.view = 'entries';
+// }
+
+// function loadEntryForm(event) {
+//   $journalForm.className = '';
+//   $submissions.className = 'hidden';
+//   $ul.className = 'hidden';
+//   data.view = 'entry-form';
+// }
 
 $inputUrl.addEventListener('input', updatePhoto);
 $journalForm.addEventListener('submit', submission);
 window.addEventListener('DOMContentLoaded', entryTreeCreation);
-$navItem.addEventListener('click', loadSubmissions);
-$newButton.addEventListener('click', loadEntryForm);
+// $navItem.addEventListener('click', loadSubmissions);
+// $newButton.addEventListener('click', loadEntryForm);
