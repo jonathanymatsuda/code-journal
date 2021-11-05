@@ -1,14 +1,12 @@
 /* global data */
-// var $container = document.querySelector('.container');
 var $img = document.querySelector('img');
 var $inputUrl = document.querySelector('input[type="url"]');
 var $journalForm = document.querySelector('#journal-form');
-// var $submissions = document.querySelector('#submissions');
 var $ul = document.querySelector('#entries-list');
-// var $navItem = document.querySelector('.nav-item');
-// var $newButton = document.querySelector('.new-button');
-// var $dataView = document.querySelectorAll('data-view');
-// var $applicationView = document.querySelectorAll('.application-view');
+var $navItem = document.querySelector('.nav-item');
+var $newButton = document.querySelector('.new-button');
+var $applicationView = document.querySelectorAll('.application-view');
+var $noEntries = document.querySelector('.no-entries');
 
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
@@ -69,35 +67,35 @@ function entryTreeCreation(event) {
   }
 }
 
-// function switchViews(viewName) {
-//   for (var view = 0; view < $applicationView.length; view++) {
-//     if ($applicationView[view].getAttribute('data-view') === viewName) {
-//       $applicationView[view].className = 'application-view';
-//     } else {
-//       $applicationView[view].className = 'hidden application-view';
-//     }
-//   }
-//   data.view = viewName;
-// }
+function switchViews(viewName) {
+  for (var view = 0; view < $applicationView.length; view++) {
+    if ($applicationView[view].getAttribute('data-view') === viewName) {
+      $applicationView[view].className = 'application-view';
+    } else {
+      $applicationView[view].className = 'hidden application-view';
+    }
+  }
+  data.view = viewName;
+}
 
-// function loadSubmissions(event) {
-//   data.view = 'entries';
+function loadSubmissions(event) {
+  switchViews('entries');
+  if (data.nextEntryId < 2) {
+    $noEntries.className = 'row text-align-center no-entries';
+  } else {
+    $noEntries.className = 'row text-align-center no-entries hidden';
+    $ul.className = '';
+  }
+}
 
-//   $journalForm.className = 'hidden';
-//   $submissions.className = '';
-//   $ul.className = '';
-//   data.view = 'entries';
-// }
-
-// function loadEntryForm(event) {
-//   $journalForm.className = '';
-//   $submissions.className = 'hidden';
-//   $ul.className = 'hidden';
-//   data.view = 'entry-form';
-// }
+function loadEntryForm(event) {
+  switchViews('entry-form');
+  $noEntries.className = 'row text-align-center no-entries hidden';
+  $ul.className = 'hidden';
+}
 
 $inputUrl.addEventListener('input', updatePhoto);
 $journalForm.addEventListener('submit', submission);
 window.addEventListener('DOMContentLoaded', entryTreeCreation);
-// $navItem.addEventListener('click', loadSubmissions);
-// $newButton.addEventListener('click', loadEntryForm);
+$navItem.addEventListener('click', loadSubmissions);
+$newButton.addEventListener('click', loadEntryForm);

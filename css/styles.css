@@ -1,5 +1,5 @@
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 header {
@@ -8,7 +8,7 @@ header {
 
 body {
   font-family: 'Proza Libre', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.5;
 }
 
@@ -69,22 +69,6 @@ textarea {
 
 li {
   list-style: none;
-}
-
-.gap-1rem {
-  column-gap: 1rem;
-}
-
-.orange-background {
-  background-color: #fac898;
-}
-
-.beige-background {
-  background-color: rgb(216, 216, 220);
-}
-
-.white-text {
-  color: white;
 }
 
 .border-radius {
