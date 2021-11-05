@@ -65,6 +65,7 @@ function entryTreeCreation(event) {
     renderEntries(data.entries[entry]);
     $ul.appendChild(renderEntries(data.entries[entry]));
   }
+  switchViews(data.view);
 }
 
 function switchViews(viewName) {
