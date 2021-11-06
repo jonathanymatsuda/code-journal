@@ -24,6 +24,7 @@ function submission(event) {
   data.entries.unshift(inputValues);
   $img.src = 'images/placeholder-image-square.jpg';
   $journalForm.reset();
+  toggleNoEntryText();
 }
 
 function renderEntries(entries) {
@@ -65,6 +66,7 @@ function entryTreeCreation(event) {
     renderEntries(data.entries[entry]);
     $ul.appendChild(renderEntries(data.entries[entry]));
   }
+  toggleNoEntryText();
   switchViews(data.view);
 }
 
@@ -81,18 +83,18 @@ function switchViews(viewName) {
 
 function loadSubmissions(event) {
   switchViews('entries');
-  if (data.nextEntryId < 2) {
-    $noEntries.className = 'row text-align-center no-entries';
-  } else {
-    $noEntries.className = 'row text-align-center no-entries hidden';
-    $ul.className = '';
-  }
 }
 
 function loadEntryForm(event) {
   switchViews('entry-form');
-  $noEntries.className = 'row text-align-center no-entries hidden';
-  $ul.className = 'hidden';
+}
+
+function toggleNoEntryText() {
+  if (data.entries.length > 0) {
+    $noEntries.className = 'row text-align-center no-entries hidden';
+  } else {
+    $noEntries.className = 'row text-align-center no-entries';
+  }
 }
 
 $inputUrl.addEventListener('input', updatePhoto);
