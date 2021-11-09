@@ -1,10 +1,14 @@
+.hidden {
+  display: none !important;
+}
+
 header {
   height: 90px;
 }
 
 body {
   font-family: 'Proza Libre', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.5;
 }
 
@@ -24,15 +28,17 @@ h2 {
 img {
   width: 100%;
   height: 245px;
-  object-fit: contain;
+  object-fit: scale-down;
 }
 
 input,
-textarea {
+textarea,
+p {
   width: 100%;
   font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
   padding: 5px 5px;
+  resize: none;
 }
 
 textarea {
@@ -45,18 +51,24 @@ textarea {
   margin-top: 15px;
   text-transform: uppercase;
   cursor: pointer;
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
 }
 
-.purple-background {
-  background-color: #562b81;
+.new-button {
+  width: 60px;
+  padding: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
 }
 
-.beige-background {
-  background-color: #f0f0f0;
+.nav-item {
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.white-text {
-  color: white;
+li {
+  list-style: none;
 }
 
 .border-radius {
