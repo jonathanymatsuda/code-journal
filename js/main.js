@@ -64,7 +64,6 @@ function renderEntries(entries) {
 
 function entryTreeCreation(event) {
   for (var entry = 0; entry < data.entries.length; entry++) {
-    renderEntries(data.entries[entry]);
     $ul.appendChild(renderEntries(data.entries[entry]));
   }
   toggleNoEntryText();
