@@ -24,6 +24,7 @@ function submission(event) {
   data.entries.unshift(inputValues);
   $img.src = 'images/placeholder-image-square.jpg';
   $journalForm.reset();
+  switchViews('entries');
   toggleNoEntryText();
 }
 
