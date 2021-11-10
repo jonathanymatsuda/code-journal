@@ -101,8 +101,12 @@ function toggleNoEntryText() {
   }
 }
 
+function editEntry(event) {
+  switchViews('entry-form');
+}
 $inputUrl.addEventListener('input', updatePhoto);
 $journalForm.addEventListener('submit', submission);
 window.addEventListener('DOMContentLoaded', entryTreeCreation);
 $navItem.addEventListener('click', loadSubmissions);
 $newButton.addEventListener('click', loadEntryForm);
+$ul.addEventListener('click', editEntry);
