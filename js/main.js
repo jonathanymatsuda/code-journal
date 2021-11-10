@@ -54,6 +54,10 @@ function renderEntries(entries) {
   $divColHalfTwo.appendChild($h2);
   $h2.appendChild($h2TextContent);
 
+  var $editIcon = document.createElement('i');
+  $editIcon.setAttribute('class', 'fa fa-pen');
+  $h2.appendChild($editIcon);
+
   var $paragraph = document.createElement('p');
   var $paragraphText = document.createTextNode(entries.notes);
   $divColHalfTwo.appendChild($paragraph);

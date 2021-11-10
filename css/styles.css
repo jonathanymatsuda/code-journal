@@ -13,8 +13,7 @@ body {
 }
 
 h2 {
-  font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .column-half .header {
@@ -27,8 +26,8 @@ h2 {
 
 img {
   width: 100%;
-  height: 245px;
-  object-fit: scale-down;
+  height: 90%;
+  object-fit: fill;
 }
 
 input,
@@ -69,6 +68,15 @@ textarea {
 
 li {
   list-style: none;
+  position: relative;
+}
+
+i {
+  color: #fac898;
+  cursor: pointer;
+  position: absolute;
+  top: 10;
+  right: 0;
 }
 
 .border-radius {
