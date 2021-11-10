@@ -30,6 +30,7 @@ function submission(event) {
 
 function renderEntries(entries) {
   var $li = document.createElement('li');
+  $li.setAttribute('data-entry-id', entries.entryID);
 
   var $divRow = document.createElement('div');
   $divRow.setAttribute('class', 'row');
@@ -101,12 +102,16 @@ function toggleNoEntryText() {
   }
 }
 
-function editEntry(event) {
-  switchViews('entry-form');
-}
+// function editEntry(event) {
+//   switchViews('entry-form');
+//   for (var entry = 0; entry < data.entries.length; entry++) {
+//     if (data.entries[entry] === event.target) {
+//     }
+//   }
+// }
 $inputUrl.addEventListener('input', updatePhoto);
 $journalForm.addEventListener('submit', submission);
 window.addEventListener('DOMContentLoaded', entryTreeCreation);
 $navItem.addEventListener('click', loadSubmissions);
 $newButton.addEventListener('click', loadEntryForm);
-$ul.addEventListener('click', editEntry);
+// $ul.addEventListener('click', editEntry);
