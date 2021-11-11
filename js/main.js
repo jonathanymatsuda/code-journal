@@ -11,6 +11,7 @@ var $noEntries = document.querySelector('.no-entries');
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
 }
+
 function submission(event) {
   event.preventDefault();
   var inputValues = {
@@ -110,6 +111,11 @@ function editEntry(event) {
         data.editing = data.entries[entry];
       }
     }
+    $journalForm.elements.title.value = data.editing.title;
+    $journalForm.elements.url.value = data.editing.photo;
+    updatePhoto();
+    $journalForm.elements.notes.value = data.editing.notes;
+
   }
 }
 
