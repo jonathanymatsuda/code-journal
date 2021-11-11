@@ -102,16 +102,20 @@ function toggleNoEntryText() {
   }
 }
 
-// function editEntry(event) {
-//   switchViews('entry-form');
-//   for (var entry = 0; entry < data.entries.length; entry++) {
-//     if (data.entries[entry] === event.target) {
-//     }
-//   }
-// }
+function editEntry(event) {
+  if (event.target.tagName === 'I') {
+    switchViews('entry-form');
+    for (var entry = 0; entry < data.entries.length; entry++) {
+      if (parseInt(event.target.closest('li').getAttribute('data-entry-id')) === data.entries[entry].entryID) {
+        data.editing = data.entries[entry];
+      }
+    }
+  }
+}
+
 $inputUrl.addEventListener('input', updatePhoto);
 $journalForm.addEventListener('submit', submission);
 window.addEventListener('DOMContentLoaded', entryTreeCreation);
 $navItem.addEventListener('click', loadSubmissions);
 $newButton.addEventListener('click', loadEntryForm);
-// $ul.addEventListener('click', editEntry);
+$ul.addEventListener('click', editEntry);
