@@ -9,6 +9,7 @@ var $navItem = document.querySelector('.nav-item');
 var $newButton = document.querySelector('.new-button');
 var $applicationView = document.querySelectorAll('.application-view');
 var $noEntries = document.querySelector('.no-entries');
+var $li = document.querySelectorAll('li');
 
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
@@ -24,8 +25,8 @@ function submission(event) {
       entryID: data.nextEntryId++
     };
     var renderedEntries = renderEntries(inputValues);
-    $ul.prepend(renderedEntries);
     data.entries.unshift(inputValues);
+    $ul.prepend(renderedEntries);
   } else {
     var updatedValues = {
       title: $title.value,
@@ -35,16 +36,20 @@ function submission(event) {
     };
     for (var entry = 0; entry < data.entries.length; entry++) {
       if (data.editing === data.entries[entry].entryID) {
-        data.entries[entry].title = updatedValues.title;
-        data.entries[entry].photo = updatedValues.photo;
-        data.entries[entry].notes = updatedValues.notes;
+        data.entries[entry] = updatedValues;
       }
     }
-    $img.src = 'images/placeholder-image-square.jpg';
-    $journalForm.reset();
-    switchViews('entries');
-    toggleNoEntryText();
+    for (var liElement = 0; liElement < $li.length; liElement++) {
+      if (data.editing === parseInt($li.getAttribute('data-entry-id'))) {
+        var updatedEntries = renderEntries(updatedValues);
+        $li[liElement].replaceWith(updatedEntries);
+      }
+    }
   }
+  $img.src = 'images/placeholder-image-square.jpg';
+  $journalForm.reset();
+  switchViews('entries');
+  toggleNoEntryText();
 }
 
 function renderEntries(entries) {
