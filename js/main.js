@@ -1,44 +1,51 @@
 /* global data */
-// var $img = document.querySelector('img');
-// var $inputUrl = document.querySelector('input[type="url"]');
-// var $title = document.querySelector('input[type="text"]');
-// var $notes = document.querySelector('textarea');
-// var $journalForm = document.querySelector('#journal-form');
-// var $ul = document.querySelector('#entries-list');
-// var $navItem = document.querySelector('.nav-item');
-// var $newButton = document.querySelector('.new-button');
-// var $applicationView = document.querySelectorAll('.application-view');
-// var $noEntries = document.querySelector('.no-entries');
+var $img = document.querySelector('img');
+var $inputUrl = document.querySelector('input[type="url"]');
+var $title = document.querySelector('input[type="text"]');
+var $notes = document.querySelector('textarea');
+var $journalForm = document.querySelector('#journal-form');
+var $ul = document.querySelector('#entries-list');
+var $navItem = document.querySelector('.nav-item');
+var $newButton = document.querySelector('.new-button');
+var $applicationView = document.querySelectorAll('.application-view');
+var $noEntries = document.querySelector('.no-entries');
 
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
 }
 
-// function submission(event) {
-//   event.preventDefault();
-//   if (data.editing === null) {
-//     var inputValues = {
-//       title: $journalForm.elements.title.value,
-//       photo: $journalForm.elements.url.value,
-//       notes: $journalForm.elements.notes.value,
-//       entryID: data.nextEntryId++
-//     };
-//     var renderedEntries = renderEntries(inputValues);
-//     $ul.prepend(renderedEntries);
-//     data.entries.unshift(inputValues);
-//   } else {
-//     var updatedValues = {
-//       title: $title.value,
-//       photo: $inputUrl.value,
-//       notes: $notes.value,
-//       entryID: data.editing
-//     };
-//     $img.src = 'images/placeholder-image-square.jpg';
-//     $journalForm.reset();
-//     switchViews('entries');
-//     toggleNoEntryText();
-//   }
-// }
+function submission(event) {
+  event.preventDefault();
+  if (data.editing === null) {
+    var inputValues = {
+      title: $journalForm.elements.title.value,
+      photo: $journalForm.elements.url.value,
+      notes: $journalForm.elements.notes.value,
+      entryID: data.nextEntryId++
+    };
+    var renderedEntries = renderEntries(inputValues);
+    $ul.prepend(renderedEntries);
+    data.entries.unshift(inputValues);
+  } else {
+    var updatedValues = {
+      title: $title.value,
+      photo: $inputUrl.value,
+      notes: $notes.value,
+      entryID: data.editing
+    };
+    for (var entry = 0; entry < data.entries.length; entry++) {
+      if (data.editing === data.entries[entry].entryID) {
+        data.entries[entry].title = updatedValues.title;
+        data.entries[entry].photo = updatedValues.photo;
+        data.entries[entry].notes = updatedValues.notes;
+      }
+    }
+    $img.src = 'images/placeholder-image-square.jpg';
+    $journalForm.reset();
+    switchViews('entries');
+    toggleNoEntryText();
+  }
+}
 
 function renderEntries(entries) {
   var $li = document.createElement('li');
@@ -120,13 +127,12 @@ function editEntry(event) {
     for (var entry = 0; entry < data.entries.length; entry++) {
       if (parseInt(event.target.closest('li').getAttribute('data-entry-id')) === data.entries[entry].entryID) {
         data.editing = data.entries[entry].entryID;
+        $journalForm.elements.title.value = data.entries[entry].title;
+        $journalForm.elements.url.value = data.entries[entry].photo;
+        updatePhoto();
+        $journalForm.elements.notes.value = data.entries[entry].notes;
       }
     }
-    $journalForm.elements.title.value = data.editing.title;
-    $journalForm.elements.url.value = data.editing.photo;
-    updatePhoto();
-    $journalForm.elements.notes.value = data.editing.notes;
-
   }
 }
 
