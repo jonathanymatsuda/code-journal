@@ -1,6 +1,8 @@
 /* global data */
 var $img = document.querySelector('img');
 var $inputUrl = document.querySelector('input[type="url"]');
+var $title = document.querySelector('input[type="text"]');
+var $notes = document.querySelector('textarea');
 var $journalForm = document.querySelector('#journal-form');
 var $ul = document.querySelector('#entries-list');
 var $navItem = document.querySelector('.nav-item');
@@ -11,17 +13,39 @@ var $noEntries = document.querySelector('.no-entries');
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
 }
+
 function submission(event) {
   event.preventDefault();
-  var inputValues = {
-    title: $journalForm.elements.title.value,
-    photo: $journalForm.elements.url.value,
-    notes: $journalForm.elements.notes.value,
-    entryID: data.nextEntryId++
-  };
-  var renderedEntries = renderEntries(inputValues);
-  $ul.prepend(renderedEntries);
-  data.entries.unshift(inputValues);
+  if (data.editing === null) {
+    var inputValues = {
+      title: $journalForm.elements.title.value,
+      photo: $journalForm.elements.url.value,
+      notes: $journalForm.elements.notes.value,
+      entryID: data.nextEntryId++
+    };
+    var renderedEntries = renderEntries(inputValues);
+    data.entries.unshift(inputValues);
+    $ul.prepend(renderedEntries);
+  } else {
+    var updatedValues = {
+      title: $title.value,
+      photo: $inputUrl.value,
+      notes: $notes.value,
+      entryID: data.editing.entryID
+    };
+    var $li = document.querySelectorAll('li');
+    for (var entry = 0; entry < data.entries.length; entry++) {
+      if (data.editing.entryID === data.entries[entry].entryID) {
+        data.entries[entry] = updatedValues;
+      }
+    }
+    for (var liIndex = 0; liIndex < $li.length; liIndex++) {
+      if (data.editing.entryID === parseInt($li[liIndex].getAttribute('data-entry-id'))) {
+        var updatedEntries = renderEntries(updatedValues);
+        $li[liIndex].replaceWith(updatedEntries);
+      }
+    }
+  }
   $img.src = 'images/placeholder-image-square.jpg';
   $journalForm.reset();
   switchViews('entries');
@@ -30,6 +54,7 @@ function submission(event) {
 
 function renderEntries(entries) {
   var $li = document.createElement('li');
+  $li.setAttribute('data-entry-id', entries.entryID);
 
   var $divRow = document.createElement('div');
   $divRow.setAttribute('class', 'row');
@@ -53,6 +78,10 @@ function renderEntries(entries) {
   var $h2TextContent = document.createTextNode(entries.title);
   $divColHalfTwo.appendChild($h2);
   $h2.appendChild($h2TextContent);
+
+  var $editIcon = document.createElement('i');
+  $editIcon.setAttribute('class', 'fa fa-pen');
+  $h2.appendChild($editIcon);
 
   var $paragraph = document.createElement('p');
   var $paragraphText = document.createTextNode(entries.notes);
@@ -87,6 +116,7 @@ function loadSubmissions(event) {
 
 function loadEntryForm(event) {
   switchViews('entry-form');
+  data.editing = null;
 }
 
 function toggleNoEntryText() {
@@ -97,8 +127,24 @@ function toggleNoEntryText() {
   }
 }
 
+function editEntry(event) {
+  if (event.target.tagName === 'I') {
+    switchViews('entry-form');
+    for (var entry = 0; entry < data.entries.length; entry++) {
+      if (parseInt(event.target.closest('li').getAttribute('data-entry-id')) === data.entries[entry].entryID) {
+        data.editing = data.entries[entry];
+        $journalForm.elements.title.value = data.entries[entry].title;
+        $journalForm.elements.url.value = data.entries[entry].photo;
+        updatePhoto();
+        $journalForm.elements.notes.value = data.entries[entry].notes;
+      }
+    }
+  }
+}
+
 $inputUrl.addEventListener('input', updatePhoto);
 $journalForm.addEventListener('submit', submission);
 window.addEventListener('DOMContentLoaded', entryTreeCreation);
 $navItem.addEventListener('click', loadSubmissions);
 $newButton.addEventListener('click', loadEntryForm);
+$ul.addEventListener('click', editEntry);
