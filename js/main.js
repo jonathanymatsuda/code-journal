@@ -9,7 +9,6 @@ var $navItem = document.querySelector('.nav-item');
 var $newButton = document.querySelector('.new-button');
 var $applicationView = document.querySelectorAll('.application-view');
 var $noEntries = document.querySelector('.no-entries');
-var $li = document.querySelectorAll('li');
 
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
@@ -32,17 +31,18 @@ function submission(event) {
       title: $title.value,
       photo: $inputUrl.value,
       notes: $notes.value,
-      entryID: data.editing
+      entryID: data.editing.entryID
     };
+    var $li = document.querySelectorAll('li');
     for (var entry = 0; entry < data.entries.length; entry++) {
-      if (data.editing === data.entries[entry].entryID) {
+      if (data.editing.entryID === data.entries[entry].entryID) {
         data.entries[entry] = updatedValues;
       }
     }
-    for (var liElement = 0; liElement < $li.length; liElement++) {
-      if (data.editing === parseInt($li.getAttribute('data-entry-id'))) {
+    for (var liIndex = 0; liIndex < $li.length; liIndex++) {
+      if (data.editing.entryID === parseInt($li[liIndex].getAttribute('data-entry-id'))) {
         var updatedEntries = renderEntries(updatedValues);
-        $li[liElement].replaceWith(updatedEntries);
+        $li[liIndex].replaceWith(updatedEntries);
       }
     }
   }
@@ -116,6 +116,7 @@ function loadSubmissions(event) {
 
 function loadEntryForm(event) {
   switchViews('entry-form');
+  data.editing = null;
 }
 
 function toggleNoEntryText() {
@@ -131,7 +132,7 @@ function editEntry(event) {
     switchViews('entry-form');
     for (var entry = 0; entry < data.entries.length; entry++) {
       if (parseInt(event.target.closest('li').getAttribute('data-entry-id')) === data.entries[entry].entryID) {
-        data.editing = data.entries[entry].entryID;
+        data.editing = data.entries[entry];
         $journalForm.elements.title.value = data.entries[entry].title;
         $journalForm.elements.url.value = data.entries[entry].photo;
         updatePhoto();
