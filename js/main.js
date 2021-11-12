@@ -9,6 +9,8 @@ var $navItem = document.querySelector('.nav-item');
 var $newButton = document.querySelector('.new-button');
 var $applicationView = document.querySelectorAll('.application-view');
 var $noEntries = document.querySelector('.no-entries');
+var $buttonRow = document.querySelector('.button-row');
+var $deleteButton = document.querySelector('.delete-button');
 
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
@@ -140,6 +142,8 @@ function editEntry(event) {
       }
     }
   }
+  $buttonRow.className = 'row button-row space-between align-items-center';
+  $deleteButton.className = 'delete-button red-text';
 }
 
 $inputUrl.addEventListener('input', updatePhoto);

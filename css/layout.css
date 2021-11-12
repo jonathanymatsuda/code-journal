@@ -1,5 +1,5 @@
 .hidden {
-  display: none !important;
+  display: none;
 }
 
 .container {
@@ -34,8 +34,16 @@
   text-align: end;
 }
 
+.justify-content-end {
+  justify-content: end;
+}
+
 .space-between {
   justify-content: space-between;
+}
+
+.space-evenly {
+  justify-content: space-around;
 }
 
 .gap-1rem {
@@ -52,6 +60,10 @@
 
 .white-text {
   color: white;
+}
+
+.red-text {
+  color: #dc2627;
 }
 
 @media screen and (min-width: 768px) {
