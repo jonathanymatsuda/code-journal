@@ -49,17 +49,34 @@
             <textarea name="notes" id="notes-box" class="border-radius"></textarea>
           </div>
         </div>
-        <div class="row button-row justify-content-end align-items-center">
-          <div class="column-full"></div>
+        <div class="row button-row space-between">
+          <div class="column-full">
+            <span>
             <button type="button" class="delete-button red-text hidden">Delete Entry</button>
+            </span>
+            <span>
             <button type="submit" class="save-button orange-background white-text border-radius">Save</button>
+            </span>
+          </div>
+        </div>
+        <div class="delete-modal hidden">
+          <div class="row text-align-center">
+            <div class="column-full">
+              <h4>Are you sure you want to delete this entry?</h4>
+            </div>
+          </div>
+          <div class="row justify-content-center space-evenly">
+            <div class="column-full modal-buttons"></div>
+              <button class="cancel-button">CANCEL</button>
+              <button class="delete-confirmed-button white-text">CONFIRM</button>
+          </div>
         </div>
       </form>
       <div id="submissions" data-view="entries" class="hidden application-view">
         <div class="row align-items-center space-between">
           <div class="column-full"></div>
           <h1>Entries</h1>
-          <button class="new-button orange-background white-text border-radius">New</button>
+          <button class="new-button orange-background white-text">New</button>
         </div>
         <div class="row text-align-center no-entries">
           <div class="column-full">
