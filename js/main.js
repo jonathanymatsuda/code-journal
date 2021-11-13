@@ -1,4 +1,5 @@
 /* global data */
+var $body = document.querySelector('body');
 var $img = document.querySelector('img');
 var $inputUrl = document.querySelector('input[type="url"]');
 var $title = document.querySelector('input[type="text"]');
@@ -9,8 +10,9 @@ var $navItem = document.querySelector('.nav-item');
 var $newButton = document.querySelector('.new-button');
 var $applicationView = document.querySelectorAll('.application-view');
 var $noEntries = document.querySelector('.no-entries');
-// var $buttonRow = document.querySelector('.button-row');
 var $deleteButton = document.querySelector('.delete-button');
+var $deleteModal = document.querySelector('.delete-modal');
+var $cancelButton = document.querySelector('.cancel-button');
 
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
@@ -118,7 +120,7 @@ function loadSubmissions(event) {
 
 function loadEntryForm(event) {
   switchViews('entry-form');
-  // $deleteButton.className = 'delete-button red-text hidden';
+  $deleteButton.className = 'delete-button red-text button-hide';
   $img.src = 'images/placeholder-image-square.jpg';
   $journalForm.reset();
   data.editing = null;
@@ -130,10 +132,6 @@ function toggleNoEntryText() {
   } else {
     $noEntries.className = 'row text-align-center no-entries';
   }
-}
-
-function toggleDeleteButton(event) {
-  $deleteButton.className = 'delete-button red-text';
 }
 
 function editEntry(event) {
@@ -148,12 +146,19 @@ function editEntry(event) {
         $journalForm.elements.notes.value = data.entries[entry].notes;
       }
     }
-    toggleDeleteButton();
+    $deleteButton.className = 'delete-button red-text';
   }
 }
 
 function deleteEntry(event) {
+  $deleteModal.className = 'delete-modal';
+  $body.className = 'dimmer-background';
+}
 
+function closeModal(event) {
+  $deleteModal.className = 'delete-modal hidden';
+  $body.className = 'beige-background';
+  editEntry();
 }
 
 $inputUrl.addEventListener('input', updatePhoto);
@@ -163,3 +168,4 @@ $navItem.addEventListener('click', loadSubmissions);
 $newButton.addEventListener('click', loadEntryForm);
 $ul.addEventListener('click', editEntry);
 $deleteButton.addEventListener('click', deleteEntry);
+$cancelButton.addEventListener('click', closeModal);
