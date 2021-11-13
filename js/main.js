@@ -118,7 +118,7 @@ function loadSubmissions(event) {
 
 function loadEntryForm(event) {
   switchViews('entry-form');
-  $deleteButton.className = 'delete-button red-text hidden';
+  // $deleteButton.className = 'delete-button red-text hidden';
   $img.src = 'images/placeholder-image-square.jpg';
   $journalForm.reset();
   data.editing = null;
