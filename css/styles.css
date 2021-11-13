@@ -1,5 +1,9 @@
 .hidden {
-  visibility: hidden !important;
+  display: none !important;
+}
+
+.button-hide {
+  visibility: hidden;
 }
 
 .dimmer-background {
@@ -52,7 +56,6 @@ textarea {
   width: 65px;
   padding: 10px;
   margin-top: 15px;
-  position: relative;
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
