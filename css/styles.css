@@ -1,13 +1,14 @@
-.hidden {
-  display: none !important;
-}
-
 .button-hide {
   visibility: hidden;
 }
 
 .dimmer-background {
   background-color: rgba(41, 41, 41, 0.75);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 header {
@@ -100,7 +101,7 @@ i {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -20%);
+  transform: translate(-50%, -50%);
   background-color: white;
   border-radius: 8px;
   box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;

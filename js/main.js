@@ -1,5 +1,4 @@
 /* global data */
-var $body = document.querySelector('body');
 var $img = document.querySelector('img');
 var $inputUrl = document.querySelector('input[type="url"]');
 var $title = document.querySelector('input[type="text"]');
@@ -11,8 +10,10 @@ var $newButton = document.querySelector('.new-button');
 var $applicationView = document.querySelectorAll('.application-view');
 var $noEntries = document.querySelector('.no-entries');
 var $deleteButton = document.querySelector('.delete-button');
+var $overlay = document.querySelector('.overlay');
 var $deleteModal = document.querySelector('.delete-modal');
 var $cancelButton = document.querySelector('.cancel-button');
+var $deleteConfirmButton = document.querySelector('.delete-confirmed-button');
 
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
@@ -150,22 +151,34 @@ function editEntry(event) {
   }
 }
 
-function deleteEntry(event) {
+function openDeleteModal(event) {
   $deleteModal.className = 'delete-modal';
-  $body.className = 'dimmer-background';
+  $overlay.className = 'overlay dimmer-background';
 }
 
-function closeModal(event) {
+function closeDeleteModal(event) {
+  event.preventDefault();
   $deleteModal.className = 'delete-modal hidden';
-  $body.className = 'beige-background';
-  editEntry();
+  $overlay.className = 'overlay';
 }
 
+function deleteEntry(event) {
+  for (var entry = 0; entry < data.entries.length; entry++) {
+    if (parseInt(event.target.closest('li').getAttribute('data-entry-id')) === data.entries[entry].entryID) {
+      data.editing = data.entries[entry];
+      $journalForm.elements.title.value = data.entries[entry].title;
+      $journalForm.elements.url.value = data.entries[entry].photo;
+      updatePhoto();
+      $journalForm.elements.notes.value = data.entries[entry].notes;
+    }
+  }
+}
 $inputUrl.addEventListener('input', updatePhoto);
 $journalForm.addEventListener('submit', submission);
 window.addEventListener('DOMContentLoaded', entryTreeCreation);
 $navItem.addEventListener('click', loadSubmissions);
 $newButton.addEventListener('click', loadEntryForm);
 $ul.addEventListener('click', editEntry);
-$deleteButton.addEventListener('click', deleteEntry);
-$cancelButton.addEventListener('click', closeModal);
+$deleteButton.addEventListener('click', openDeleteModal);
+$cancelButton.addEventListener('click', closeDeleteModal);
+$deleteConfirmButton.addEventListener('click', deleteEntry);
