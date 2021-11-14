@@ -151,6 +151,7 @@ function editEntry(event) {
     }
     $containerHeader.textContent = 'Edit Entry';
     $deleteButton.className = 'delete-button red-text';
+    switchViews(data.view);
   }
 }
 
