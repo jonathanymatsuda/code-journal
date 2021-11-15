@@ -9,6 +9,12 @@ var $navItem = document.querySelector('.nav-item');
 var $newButton = document.querySelector('.new-button');
 var $applicationView = document.querySelectorAll('.application-view');
 var $noEntries = document.querySelector('.no-entries');
+var $containerHeader = document.querySelector('.container-header');
+var $deleteButton = document.querySelector('.delete-button');
+var $overlay = document.querySelector('.overlay');
+var $deleteModal = document.querySelector('.delete-modal');
+var $cancelButton = document.querySelector('.cancel-button');
+var $deleteConfirmButton = document.querySelector('.delete-confirmed-button');
 
 function updatePhoto(event) {
   $img.src = $journalForm.elements.url.value;
@@ -116,6 +122,10 @@ function loadSubmissions(event) {
 
 function loadEntryForm(event) {
   switchViews('entry-form');
+  $containerHeader.textContent = 'New Entry';
+  $deleteButton.className = 'delete-button red-text button-hide';
+  $img.src = 'images/placeholder-image-square.jpg';
+  $journalForm.reset();
   data.editing = null;
 }
 
@@ -139,7 +149,37 @@ function editEntry(event) {
         $journalForm.elements.notes.value = data.entries[entry].notes;
       }
     }
+    $containerHeader.textContent = 'Edit Entry';
+    $deleteButton.className = 'delete-button red-text';
+    switchViews(data.view);
   }
+}
+
+function openDeleteModal(event) {
+  $deleteModal.className = 'delete-modal';
+  $overlay.className = 'overlay dimmer-background';
+}
+
+function closeDeleteModal(event) {
+  event.preventDefault();
+  $deleteModal.className = 'delete-modal hidden';
+  $overlay.className = 'overlay';
+}
+
+function deleteEntry(event) {
+  for (var entry = 0; entry < data.entries.length; entry++) {
+    if (data.editing.entryID === data.entries[entry].entryID) {
+      data.entries.splice(entry, 1);
+    }
+  }
+  var $li = document.querySelectorAll('li');
+  for (var liIndex = 0; liIndex < $li.length; liIndex++) {
+    if (data.editing.entryID === parseInt($li[liIndex].getAttribute('data-entry-id'))) {
+      $li[liIndex].remove();
+    }
+  }
+  $deleteModal.className = 'delete-modal hidden';
+  $overlay.className = 'overlay';
 }
 
 $inputUrl.addEventListener('input', updatePhoto);
@@ -148,3 +188,6 @@ window.addEventListener('DOMContentLoaded', entryTreeCreation);
 $navItem.addEventListener('click', loadSubmissions);
 $newButton.addEventListener('click', loadEntryForm);
 $ul.addEventListener('click', editEntry);
+$deleteButton.addEventListener('click', openDeleteModal);
+$cancelButton.addEventListener('click', closeDeleteModal);
+$deleteConfirmButton.addEventListener('click', deleteEntry);

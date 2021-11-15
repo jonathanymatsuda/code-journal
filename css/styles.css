@@ -1,5 +1,15 @@
-.hidden {
-  display: none !important;
+.button-hide {
+  visibility: hidden;
+}
+
+.dimmer-background {
+  background-color: rgba(41, 41, 41, 0.75);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition: background-color 0.3s ease;
 }
 
 header {
@@ -79,7 +89,58 @@ i {
   right: 0;
 }
 
+.delete-button {
+  border: none;
+  margin-top: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.delete-modal {
+  width: 24.5rem;
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+}
+
+.cancel-button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #b6b6b6;
+  cursor: pointer;
+}
+
+.delete-confirmed-button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #dc2627;
+  cursor: pointer;
+}
+
 .border-radius {
   border-radius: 4px;
   border: 1px solid #b6b6b6;
+}
+
+.orange-background {
+  background-color: #fac898;
+}
+
+.beige-background {
+  background-color: #f4f0e7;
+}
+
+.white-text {
+  color: white;
+}
+
+.red-text {
+  color: #dc2627;
 }
